@@ -24,7 +24,19 @@ This is a Python script that allows you to extract faces from insta posts.
 4.  The script will download the photos to the max amount you set and extract the faces. The extracted faces will be saved in the `faces` directory.
 
 
+If you get a build error when installing requirements, you may need the Visual Studio Build tools c++ workload
 
+Download build tools: https://visualstudio.microsoft.com/visual-cpp-build-tools/
+
+Then in the same folder where your EXE is, run this command:
+
+`.\vs_BuildTools.exe --quiet --wait --norestart --nocache --installPath C:\BuildTools --add Microsoft.VisualStudio.Workload.VCTools --add Microsoft.VisualStudio.Component.Windows10SDK.19041`
+
+or
+
+`vs_BuildTools.exe --quiet --wait --norestart --nocache --installPath C:\BuildTools --add Microsoft.VisualStudio.Workload.VCTools --add Microsoft.VisualStudio.Component.Windows10SDK.19041`
+
+Leave it running and you can see in your C:\BuildTools that new folders are being added. When it's finished, restart the PC and your package should install correctly 
 
 ## Video
 https://user-images.githubusercontent.com/119671806/236062228-5513880d-7953-4a04-b79f-0a8725439175.mp4
