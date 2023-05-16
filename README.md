@@ -38,6 +38,16 @@ or
 
 Leave it running and you can see in your C:\BuildTools that new folders are being added. When it's finished, restart the PC and your package should install correctly 
 
+You need to have CMake and Visual Studio (with C++ tools) installed.
+
+Here are the general steps:
+
+Install CMake.
+Install Visual Studio. During the installation, make sure to select "Desktop development with C++" in the Workloads tab. This will install the necessary C++ tools.
+After these are installed, you should be able to run pip install dlib in your command prompt.
+
+
+
 ## Video
 https://user-images.githubusercontent.com/119671806/236062228-5513880d-7953-4a04-b79f-0a8725439175.mp4
 
