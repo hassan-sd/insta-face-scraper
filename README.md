@@ -10,6 +10,7 @@ This is a Python script that allows you to extract faces from insta posts.
 -   Downloads X amount of photos from X amount of instagram profiles
 -   Extracts faces from the downloaded photos
 -   Saves the extracted faces to disk separated by each person detected
+-   Allows login auth to access private instagram profiles that you follow also
 
 ## Installation
 
@@ -19,9 +20,13 @@ This is a Python script that allows you to extract faces from insta posts.
 ## Usage
 
 1.  Open a terminal or command prompt and navigate to the root directory of the project.
-2.  Run the command `python hassan-insta.py` to launch the script.
-3.  Enter the username of the instagram profile or else a file path to a text file that contains multiple usersnames, one per each line.
-4.  The script will download the photos to the max amount you set and extract the faces. The extracted faces will be saved in the `faces` directory.
+2.  If you want to also add username/password, modify line 21 by replacing None with your username/pass as follows:
+     def download_images(username: str, max_images: int = 50, ig_username: str = None, ig_password: str = None):
+     def download_images(username: str, max_images: int = 50, ig_username: str = "myusernamehere", ig_password: str = "mypasswordhere"):
+
+4.  Run the command `python hassan-insta.py` to launch the script.
+5.  Enter the username of the instagram profile or else a file path to a text file that contains multiple usersnames, one per each line.
+6.  The script will download the photos to the max amount you set and extract the faces. The extracted faces will be saved in the `faces` directory.
 
 
 If you get a build error when installing requirements, you may need the Visual Studio Build tools c++ workload
