@@ -18,7 +18,7 @@ def get_usernames(input_data: str) -> List[str]:
         usernames = [input_data]
     return usernames
 
-def download_images(username: str, max_images: int = 50):
+def download_images(username: str, max_images: int = 50, ig_username: str = None, ig_password: str = None):
     loader = instaloader.Instaloader(
         dirname_pattern=username,
         filename_pattern="{mediaid}.jpg",  # Save images with .jpg extension
@@ -31,6 +31,18 @@ def download_images(username: str, max_images: int = 50):
         compress_json=False,
         post_metadata_txt_pattern=""
     )
+
+    if ig_username and ig_password:
+        try:
+            loader.login(ig_username, ig_password)
+        except instaloader.exceptions.TwoFactorAuthRequiredException:
+            # If two-factor authentication is required, you'll need to handle this
+            print("Two-factor authentication is required. This script does not support it.")
+            return
+        except instaloader.exceptions.BadCredentialsException:
+            # If the credentials are wrong
+            print("The provided Instagram credentials are wrong.")
+            return
 
     profile = instaloader.Profile.from_username(loader.context, username)
     posts = profile.get_posts()
@@ -51,6 +63,7 @@ def download_images(username: str, max_images: int = 50):
         if not filename.lower().endswith((".jpg", ".jpeg", ".png")):
             file_path = os.path.join(username, filename)
             os.remove(file_path)
+
 
 def detect_and_save_faces(username: str, output_dir: str = "faces"):
     if not os.path.exists(output_dir):
